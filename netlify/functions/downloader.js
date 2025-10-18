@@ -13,34 +13,32 @@ exports.handler = async (event, context) => {
       noWarnings: true,
       noCallHome: true,
       noCheckCertificate: true,
-      // Kuch aur zaroori flags
-      skipDownload: true,
-      restrictFilenames: true,
     });
 
-    // Sirf MP4 formats nikalo
-    const formats = result.formats.filter(f => f.vcodec !== 'none' && f.acodec !== 'none' && f.ext === 'mp4' && f.url);
+    // Sab se behtar format dhoondo jismein video aur audio dono hon
+    const bestFormat = result.formats
+      .filter(f => f.vcodec !== 'none' && f.acodec !== 'none' && f.url)
+      .sort((a, b) => b.height - a.height)[0]; // Sab se behtareen resolution wala
 
-    // Sab se behtar audio format nikalo
-    const audioFormat = result.formats
-      .filter(f => f.vcodec === 'none' && f.acodec !== 'none' && f.url)
-      .sort((a, b) => b.abr - a.abr)[0];
+    if (!bestFormat) {
+      throw new Error("No suitable video format found.");
+    }
 
+    // Sirf direct download link wapis bhejo
     return {
       statusCode: 200,
       body: JSON.stringify({
+        downloadUrl: bestFormat.url,
         title: result.title,
-        thumbnail: result.thumbnail,
-        formats: formats,
-        audioFormat: audioFormat,
+        ext: bestFormat.ext
       }),
     };
+
   } catch (error) {
-    // Terminal mein error dikhao taake masla pata chalay
-    console.error("--- YT-DLP EXEC ERROR ---", error); 
+    console.error("--- YT-DLP EXEC ERROR ---", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to process video. Check the server logs in your terminal.' }),
+      body: JSON.stringify({ error: 'Failed to get download link. Check server logs.' }),
     };
   }
 };
