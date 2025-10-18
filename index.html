@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloader Command Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>// Downloader Command Center //</h1>
+        </header>
+        
+        <div class="input-section">
+            <span class="prompt">></span>
+            <input type="text" id="url-input" placeholder="Paste video URL here... preview will appear automatically" autocomplete="off">
+        </div>
+        
+        <div id="preview-section" class="hidden">
+            <img id="thumbnail" src="" alt="Video Thumbnail">
+            <div class="video-details">
+                <h3 id="video-title"></h3>
+                <select id="quality-select"></select>
+                <a id="download-link" href="#" target="_blank" class="hidden">
+                    <button id="download-btn">Download Now</button>
+                </a>
+            </div>
+        </div>
+
+        <div class="terminal" id="terminal">
+            <div id="log-output"></div>
+            <div class="cursor"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

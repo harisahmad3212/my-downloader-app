@@ -1,0 +1,25 @@
+body {
+    background-color: #0d0d0d;
+    color: #00ff41;
+    font-family: 'Fira Code', monospace;
+    margin: 0;
+    padding: 20px;
+}
+.container { max-width: 1000px; margin: 0 auto; border: 1px solid #00ff41; padding: 20px; box-shadow: 0 0 20px rgba(0, 255, 65, 0.2); }
+header h1 { text-align: center; text-shadow: 0 0 5px #00ff41; margin-top: 0; }
+.input-section { display: flex; align-items: center; margin-bottom: 20px; }
+.prompt { font-size: 1.2em; margin-right: 10px; }
+#url-input { flex-grow: 1; background: transparent; border: none; border-bottom: 1px solid #00ff41; color: #00ff41; font-family: 'Fira Code', monospace; font-size: 1em; padding: 5px; }
+#url-input:focus { outline: none; box-shadow: 0 0 10px rgba(0, 255, 65, 0.5); }
+.terminal { background-color: #000; border: 1px solid #333; height: 30vh; overflow-y: scroll; padding: 10px; font-size: 0.9em; white-space: pre-wrap; word-wrap: break-word; position: relative; }
+.cursor { display: inline-block; background-color: #00ff41; width: 10px; height: 1.2em; animation: blink 1s step-end infinite; }
+@keyframes blink { from, to { background-color: transparent } 50% { background-color: #00ff41; } }
+.hidden { display: none; }
+#preview-section { display: flex; margin-top: 20px; padding: 15px; border: 1px solid #333; background-color: #000; }
+#thumbnail { width: 160px; height: 90px; object-fit: cover; border: 1px solid #00ff41; }
+.video-details { margin-left: 20px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+#video-title { margin: 0; font-size: 1.1em; color: #fff; }
+#quality-select { background: transparent; color: #00ff41; border: 1px solid #00ff41; padding: 5px; font-family: 'Fira Code', monospace; }
+#download-link { text-decoration: none; }
+#download-btn { width: 100%; margin-top: 10px; padding: 10px; background: #0d0d0d; color: #00ff41; border: 1px solid #00ff41; cursor: pointer; font-family: 'Fira Code', monospace; }
+#download-btn:hover { background: #00ff41; color: #0d0d0d; box-shadow: 0 0 15px #00ff41; }
